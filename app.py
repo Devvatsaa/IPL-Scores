@@ -126,7 +126,8 @@ def man():
 
 @app.route('/predict', methods=['POST'])  # Update this line to accept POST requests
 def predict():
-    data = request.form.to_dict()
+    data = request.get_json()
+    print(data)
     batting_team = data['batting_team']
     bowling_team = data['bowling_team']
     runs = float(data['runs'])
@@ -146,6 +147,18 @@ def predict():
         prediction_array += [1, 0, 0, 0, 0, 0, 0, 0]
     elif batting_team == 'Delhi Daredevils':
         prediction_array += [0, 1, 0, 0, 0, 0, 0, 0]
+    elif batting_team == 'Kolkata Knight Riders':
+        prediction_array += [0, 0, 1, 0, 0, 0, 0, 0]
+    elif batting_team == 'Mumbai Indians':
+        prediction_array += [0, 0, 0, 1, 0, 0, 0, 0]
+    elif batting_team == 'Punjab Kings':
+        prediction_array += [0, 0, 0, 0, 1, 0, 0, 0]
+    elif batting_team == 'Rajasthan Royals':
+        prediction_array += [0, 0, 0, 0, 0, 1, 0, 0]
+    elif batting_team == 'Royal Challengers Bangalore':
+        prediction_array += [0, 0, 0, 0, 0, 0, 1, 0]
+    elif batting_team == 'Sunrisers Hyderabad':
+        prediction_array += [0, 0, 0, 0, 0, 0, 0, 1]
     # Add other team mappings here
 
     # Bowling Team
@@ -153,6 +166,18 @@ def predict():
         prediction_array += [1, 0, 0, 0, 0, 0, 0, 0]
     elif bowling_team == 'Delhi Daredevils':
         prediction_array += [0, 1, 0, 0, 0, 0, 0, 0]
+    elif bowling_team == 'Kolkata Knight Riders':
+        prediction_array += [0, 0, 1, 0, 0, 0, 0, 0]
+    elif bowling_team == 'Mumbai Indians':
+        prediction_array += [0, 0, 0, 1, 0, 0, 0, 0]
+    elif bowling_team == 'Punjab Kings':
+        prediction_array += [0, 0, 0, 0, 1, 0, 0, 0]
+    elif bowling_team == 'Rajasthan Royals':
+        prediction_array += [0, 0, 0, 0, 0, 1, 0, 0]
+    elif bowling_team == 'Royal Challengers Bangalore':
+        prediction_array += [0, 0, 0, 0, 0, 0, 1, 0]
+    elif bowling_team == 'Sunrisers Hyderabad':
+        prediction_array += [0, 0, 0, 0, 0, 0, 0, 1]
     # Add other team mappings here
 
     # Add other features to the prediction array
